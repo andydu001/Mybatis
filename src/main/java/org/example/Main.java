@@ -42,7 +42,7 @@ public class Main {
 
             ADLiq adLiq = new ADLiq("test.xml",new DirectoryResourceAccessor
 
-                    (new File("C:\\Users\\andyd\\OneDrive\\Documents")), new JdbcConnection(pooledDataSource.getConnection()));
+            (new File("C:\\Users\\andyd\\OneDrive\\Documents")), new JdbcConnection(pooledDataSource.getConnection()));
 
             adLiq.update();
 
