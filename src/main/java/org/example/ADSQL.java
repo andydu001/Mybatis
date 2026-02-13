@@ -11,9 +11,6 @@ public class ADSQL extends BaseBuilder{
 
         super(configuration);
 
-
-      System.out.println(getConfiguration().getDatabaseId());
-
     }
 
 }

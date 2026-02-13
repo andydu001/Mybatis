@@ -10,6 +10,10 @@ import org.apache.ibatis.transaction.TransactionFactory;
 
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
+import java.io.FileNotFoundException;
+
+import java.io.PrintWriter;
+
 import java.sql.SQLException;
 
 import java.util.Properties;
@@ -17,7 +21,7 @@ import java.util.Properties;
 import java.util.UUID;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
 
 
         //  dataSource.getConnection().beginRequest();
@@ -41,13 +45,18 @@ public class Main {
 
             TransactionFactory jdbcTransactionFactory = new JdbcTransactionFactory();
 
+            pooledDataSource.setLogWriter(new PrintWriter("C:\\Users\\andyd\\OneDrive\\Documents\\asd.txt"));
+
             new ADSQL(new Configuration(new Environment(UUID.randomUUID().toString(),jdbcTransactionFactory , pooledDataSource)));
 
         }
         catch (SQLException exception){
 
-        System.out.println("Try again: "+exception.getMessage());
+            System.out.println("Try again: "+exception.getMessage());
 
+        } catch (FileNotFoundException e) {
+
+            System.out.println("Try: "+e.getMessage());
         }
     }
 }
