@@ -23,7 +23,7 @@ import java.util.UUID;
 public class Main {
     public static void main(String[] args){
 
-        String url = "jdbc:mysql://localhost:3306/test?user=root&password=A@15xvrt";
+        String url = "jdbc:mysql://localhost:3306/test?user=root&password=?";
 
         PooledDataSource pooledDataSource = new PooledDataSource("com.mysql.cj.jdbc.Driver",url,new Properties());
 
