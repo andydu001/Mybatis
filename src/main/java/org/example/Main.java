@@ -61,7 +61,6 @@ public class Main {
 
             TransactionFactory jdbcTransactionFactory = new JdbcTransactionFactory();
 
-
             pooledDataSource.setLogWriter(new PrintWriter("C:\\Users\\andyd\\OneDrive\\Documents\\asd.txt"));
 
             pooledDataSource.getLogWriter().println("Andy");
