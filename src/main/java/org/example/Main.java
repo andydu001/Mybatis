@@ -35,7 +35,7 @@ import java.util.UUID;
 public class Main {
     public static void main(String[] args){
 
-        String url = "jdbc:mysql://localhost:3306/test?user=root&password=";
+        String url = "jdbc:mysql://localhost:3306/test?user=root&password=A@15xvrt";
 
         PooledDataSource pooledDataSource = new PooledDataSource("com.mysql.cj.jdbc.Driver",url,new Properties());
 
@@ -44,7 +44,7 @@ public class Main {
 
             ADLiq adLiq = new ADLiq("test.xml",new DirectoryResourceAccessor
 
-                    (new File("C:\\Users\\andyd\\OneDrive\\Documents")), new JdbcConnection(pooledDataSource.getConnection()));
+            (new File("C:\\Users\\andyd\\OneDrive\\Documents")), new JdbcConnection(pooledDataSource.getConnection()));
 
             adLiq.update();
 

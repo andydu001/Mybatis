@@ -1,6 +1,5 @@
 package org.example;
 
-import jakarta.persistence.Persistence;
 import liquibase.Liquibase;
 
 import liquibase.database.DatabaseConnection;
@@ -47,7 +46,6 @@ public class ADLiq extends Liquibase {
             DatabaseObject[] obj = new DatabaseObject[]{catalog,data};
 
             new ADsnapshot(obj,getDatabase());
-
 
         }
         catch (DatabaseException e){
