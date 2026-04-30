@@ -25,6 +25,20 @@ dependencies {
 
     // Source: https://mvnrepository.com/artifact/org.liquibase/liquibase-core
     implementation 'org.liquibase:liquibase-core:5.0.1'
+    // Source: https://mvnrepository.com/artifact/com.puppycrawl.tools/checkstyle
+    implementation 'com.puppycrawl.tools:checkstyle:13.2.0'
+    // Source: https://mvnrepository.com/artifact/org.sonatype.plugins/nexus-staging-maven-plugin
+    implementation 'org.sonatype.plugins:nexus-staging-maven-plugin:1.7.0'
+
+    // Source: https://mvnrepository.com/artifact/io.lettuce/lettuce-core
+    implementation 'io.lettuce:lettuce-core:7.4.0.RELEASE'
+
+    // Source: https://mvnrepository.com/artifact/com.github.docker-java/docker-java
+    implementation 'com.github.docker-java:docker-java:3.7.0'
+
+    // Source: https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.2.0'
+
 }
 
 test {

@@ -1,5 +1,6 @@
 package org.example;
 
+import jakarta.persistence.Persistence;
 import liquibase.Liquibase;
 
 import liquibase.database.DatabaseConnection;
@@ -9,8 +10,6 @@ import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 
 import liquibase.resource.ResourceAccessor;
-
-import liquibase.snapshot.SnapshotControl;
 
 import liquibase.structure.DatabaseObject;
 
@@ -45,7 +44,7 @@ public class ADLiq extends Liquibase {
 
             catalog.setSnapshotId(UUID.randomUUID().toString());
 
-            DatabaseObject[] obj = new DatabaseObject[]{catalog,relation};
+            DatabaseObject[] obj = new DatabaseObject[]{catalog,data};
 
             new ADsnapshot(obj,getDatabase());
 
