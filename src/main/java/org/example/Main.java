@@ -1,5 +1,7 @@
 package org.example;
 
+import jakarta.persistence.Persistence;
+
 import liquibase.database.jvm.JdbcConnection;
 
 import liquibase.exception.LiquibaseException;
@@ -33,37 +35,30 @@ import java.util.UUID;
 public class Main {
     public static void main(String[] args){
 
-        String url = "jdbc:mysql://localhost:3306/test?user=root&password=?";
+        String url = "jdbc:mysql://localhost:3306/test?user=root&password=A@15xvrt";
 
         PooledDataSource pooledDataSource = new PooledDataSource("com.mysql.cj.jdbc.Driver",url,new Properties());
 
         try {
-            pooledDataSource.getConnection().beginRequest();
+          //  pooledDataSource.getConnection().beginRequest();
 
             ADLiq adLiq = new ADLiq("test.xml",new DirectoryResourceAccessor
 
-            (new File("C:\\Users\\andyd\\OneDrive\\Documents")), new JdbcConnection(pooledDataSource.getConnection()));
+                    (new File("C:\\Users\\andyd\\OneDrive\\Documents")), new JdbcConnection(pooledDataSource.getConnection()));
 
             adLiq.update();
 
             adLiq.reportLocks(new PrintStream("C:\\Users\\andyd\\OneDrive\\Documents\\Ac.txt"));
 
-            pooledDataSource.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS `Andy` (\n" +
-                    "  `master_db` varchar(64) NOT NULL default '',\n" +
-                    "  `master_table` varchar(64) NOT NULL default '',\n" +
-                    "  `master_field` varchar(64) NOT NULL default '',\n" +
-                    "  `foreign_db` varchar(64) NOT NULL default '',\n" +
-                    "  `foreign_table` varchar(64) NOT NULL default '',\n" +
-                    "  `foreign_field` varchar(64) NOT NULL default '',\n" +
-                    "  PRIMARY KEY  (`master_db`,`master_table`,`master_field`),\n" +
-                    "  KEY `foreign_field` (`foreign_db`,`foreign_table`)\n" +
-                    ")").execute();
-
             TransactionFactory jdbcTransactionFactory = new JdbcTransactionFactory();
 
-            pooledDataSource.setLogWriter(new PrintWriter("C:\\Users\\andyd\\OneDrive\\Documents\\asd.txt"));
+            PrintWriter printWriter = new PrintWriter("C:\\Users\\andyd\\OneDrive\\Documents\\asd.txt");
 
-            pooledDataSource.getLogWriter().println("Andy");
+            printWriter.write("AS");
+
+            System.out.println(Persistence.getPersistenceUtil().isLoaded(pooledDataSource+"loaded"));
+
+            pooledDataSource.setLogWriter(printWriter);
 
             new ADSQL(new Configuration(new Environment(UUID.randomUUID().toString(),jdbcTransactionFactory , pooledDataSource)));
 
@@ -80,5 +75,6 @@ public class Main {
 
             System.out.println("Liqui"+e.getMessage());
         }
+
     }
 }
